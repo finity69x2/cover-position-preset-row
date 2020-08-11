@@ -34,7 +34,8 @@ Then to use this in a card place the following in your entity card:
 | type | String | Yes | none | custom:cover-position-entity-row |
 | name | String | No | none | A custom name for the entity in the row |
 | customTheme | Boolean | No | false | set to true to use a custom theme |
-| customSetpoints | Boolean | No | false | set to true to use custom brightness setpoints |
+| customSetpoints | Boolean | No | false | set to true to use custom position setpoints |
+| customText | Boolean | No | false | set to true to use custom button text |
 | IsOpenedColor | String | No | '#f44c09' | Sets the color of the 'open' button if cover is fully open |
 | IsMidOpenedColor | String | No | '#f44c09' | Sets the color of the 'mid open' button if cover is partially open but closer to open |
 | IsMidClosedColor | String | No | '#f44c09' | Sets the color of the 'mid closed' button if cover is partially open but cloder to closed |
@@ -51,6 +52,8 @@ Then to use this in a card place the following in your entity card:
 
 
 The values for the colors can be any valid color string in "HEX", "RGB" or by color name.
+
+If no custom setting is provided it will use the 'default' value for that individual setting.
 
 If the cover position is changed via any other means (slider, service call, etc) the buttons will indicate which range the cover position is in based on the setpoint settings in the config.
 
