@@ -35,7 +35,7 @@ Then to use this in a card place the following in your entity card:
 | name | String | No | none | A custom name for the entity in the row |
 | customTheme | Boolean | No | false | set to true to use a custom theme |
 | customSetpoints | Boolean | No | false | set to true to use custom brightness setpoints |
-| IsOpenedColor | String | No | '#f44c09' | Sets the color of the 'Open' button if cover is fully open |
+| IsOpenedColor | String | No | '#f44c09' | Sets the color of the 'open' button if cover is fully open |
 | IsMidOpenedColor | String | No | '#f44c09' | Sets the color of the 'mid open' button if cover is partially open but closer to open |
 | IsMidClosedColor | String | No | '#f44c09' | Sets the color of the 'mid closed' button if cover is partially open but cloder to closed |
 | IsClosedColor | String | No | '#43A047' | Sets the color of the 'closed' button if cover is closed |
