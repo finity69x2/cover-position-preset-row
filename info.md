@@ -46,6 +46,10 @@ This is with the "Slate" frontend theme set:
 
 ![Slate](blinds_default_slate_theme.jpg)
 
-This is how this plugin looks with the Fan control & Binary Button Rows:
+This is with custom setpoints and a custom theme:
 
-![Slate-Compare](button-row-example-compare.gif)
+![Custom Setpoints and Theme](blinds_custom_setpoints.jpg)
+
+And here is the above with custom text:
+
+![Custom Setpoints and Theme](blinds_custom_text.jpg)
