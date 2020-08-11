@@ -1,7 +1,9 @@
-# light-brightness-preset-row
-Provides a means to program 3 preset brightness settings for dimmable lights selectable from a Lovelace button row.
+# cover-position-preset-row
+Provides a means to program 3 preset position settings for programmable cover entities selectable from a Lovelace button row. This plugin will also accept a "cover group" as the entity_id.
 
-This pluig-in was inspired by user @jazzyisj on the Home Assistant forum (community.home-assistant.io) as a thematically complementary plug-in for my fan control row.
+This pluig-in was inspired by user @ktownsend-personal on the Home Assistant forum (community.home-assistant.io) as a thematically complementary plug-in for my other various control rows.
+
+This element is completely theme-able to provide a match to the other control rows to provide a consistent look for the different elements in your Lovelace frontend
 
 Installation:
 
@@ -12,12 +14,12 @@ Follow the instructions there for installation making sure you note the "url:" s
 
 Conversely, if you don't use HACS you can install it manually by performing the following:
 
-Copy the light-brightness-preset-row.js file to the appropriate folder in your Home Assistant Configuration directory (/config/www/).
+Copy the cover-position-preset-row.js file to the appropriate folder in your Home Assistant Configuration directory (/config/www/).
 
 Place the following in your "resources" section in your lovelace configuration (updating the localation to where you placed the above file):
 
   ```
-    - url: /local/light-brightness-preset-row.js
+    - url: /local/cover-position-preset-row.js
       type: module
   ```
     
@@ -28,83 +30,78 @@ Then to use this in a card place the following in your entity card:
 
 | Name | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| entity | String | Yes | none | any dimmable light entity_id (including "light group" entities) |
-| type | String | Yes | none | custom:light-brightness-entity-row |
+| entity | String | Yes | none | Any positional cover entity_id (including "cover group" entities) |
+| type | String | Yes | none | custom:cover-position-entity-row |
 | name | String | No | none | A custom name for the entity in the row |
 | customTheme | Boolean | No | false | set to true to use a custom theme |
 | customSetpoints | Boolean | No | false | set to true to use custom brightness setpoints |
-| IsOffColor | String | No | '#f44c09' | Sets the color of the 'Off' button if light is off |
-| IsOnLowColor | String | No | '#43A047' | Sets the color of the 'Low' button if light is on low |
-| IsOnMedColor | String | No | '#43A047' | Sets the color of the 'Med' button if light is on Medium |
-| IsOnHiColor | String | No | '#43A047' | Sets the color of the 'Hi' button if light is on high |
+| IsOpenedColor | String | No | '#f44c09' | Sets the color of the 'Open' button if cover is fully open |
+| IsMidOpenedColor | String | No | '#f44c09' | Sets the color of the 'mid open' button if cover is partially open but closer to open |
+| IsMidClosedColor | String | No | '#f44c09' | Sets the color of the 'mid closed' button if cover is partially open but cloder to closed |
+| IsClosedColor | String | No | '#43A047' | Sets the color of the 'closed' button if cover is closed |
 | ButtonInactiveColor | String | No | '#759aaa' | Sets the color of the the buttons if that selection is not "active" |
-| LowBrightness | Integer | No | 43 | Sets the brighness level for the "Low" button |
-| MedBrightness | Integer | No | 128 | Sets the brighness level for the "Med" button  |
-| HiBrightness | Integer | No | 213 | Sets the brighness level for the "High" button (max 254) |
-| customOffText | String | No | 'OFF' | Sets the text of the "off" button |
-| customLowText | String | No | 'LOW' | Sets the text of the "low" speed button |
-| customMedText | String | No | 'MED' | Sets the text of the "medium" speed button |
-| customHiText | String | No | 'HIGH' | Sets the text of the "High" speed button |
+| OpenPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
+| MidOpenPosition | Integer | No | 66 | Sets the position setpoint for the "mid open" button  |
+| MidClosedPosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
+| ClosedPosition | Integer | No | 0 | Sets the position setpoint for the "close" button (min 0)|
+| customOpenText | String | No | '99%' | Sets the text of the "open" position button |
+| customMidOpenText | String | No | '66%' | Sets the text of the "mid open" position button |
+| customMidClosedText | String | No | '33%' | Sets the text of the "mid close" position button |
+| customClosedText | String | No | '0%' | Sets the text of the "close" position button |
 
 
 The values for the colors can be any valid color string in "HEX", "RGB" or by color name.
 
-If the light brightness is changed via any other means (slider, service call, etc) the buttons will indicate which range the light brightness is in based on the setpoint settings in the config.
+If the cover position is changed via any other means (slider, service call, etc) the buttons will indicate which range the cover position is in based on the setpoint settings in the config.
 
-This plugin can also be used with a group of dimmable lights by creating a "light group". Then each light in the group will be simultaneously controlled by the plugin.
+This plugin can also be used with a group of positionable covers by creating a "cover group". Then each cover in the group will be simultaneously controlled by the plugin.
 
 <b>Configuration Examples:</b>
     
   ```
     cards:
       - type: entities
-        title: Hall Light Presets
+        title: cover theme test
         show_header_toggle: false
+        state_color: true
         entities:
-        ## USE THIS CONFIG TO HAVE IT MATCH YOUR THEME ##
-          - entity: light.hall_light
-            type: custom:light-brightness-preset-row
-            name: Light Not Custom Theme
-            customTheme: false
-        ## USE THIS CONFIG TO USE A DEFAULT CUSTOM THEME
-          - entity: light.hall_light
-            type: custom:light-brightness-preset-row
-            name: Light Default Custom Theme
+          - type: custom:cover-position-preset-row
+            name: Blind Custom Position
+            entity: cover.blinds_test
+            ## used to select your own customizable theme
             customTheme: true
+            IsOpenColor: 'rgb(255, 0, 0)'
+            IsMidOpenColor: '#888888'
+            IsMidClosedColor: '#222222'
+            IsClosedColor: 'purple'
+            ButtonInactiveColor: 'black'
+            ## used to set the custom setpoints for the cover (default is 0, 33, 66, and 99)
             customSetpoints: true
-            LowBrightness: 30
-            MedBrightness: 100
-            HiBrightness: 225
-        ## USE THIS CONFIG TO USE A 'CUSTOMZED' CUSTOM THEME
-          - entity: light.hall_light
-            type: custom:light-brightness-preset-row
-            name: Light Custom Custom Theme
-            customTheme: true
-            IsOnLowColor: 'rgb(255, 0, 0)'
-            IsOnMedColor: '#888888'
-            IsOnHiColor: '#222222'
-            ButtonInactiveColor: '#aaaaaa'
-            IsOffColor: 'purple'
-        ## USE THIS CONFIG TO SET CUSTOM BUTTON TEXT (NOT REQUIRED TO SET "customTheme: true" TO USE THESE )
-          - entity: light.hall_light
-            type: custom:light-brightness-preset-row
-            name: Light Custom Button Text
-            customHiText: me
-            customLowText: do
-            customMedText: re
-            customOffText: not
-            
+            OpenPosition: 85
+            MidOpenPosition: 40
+            MidClosePosition: 20
+            ClosePosition: 8
+            ## used to select custom text for the buttons (defaults to 0, 33, 66, 99. Or it defaults to the values of the setpoints if custom setpoints are used)
+            customText: true
+            customOpenText: open
+            customMidOpenText: mop
+            customMidClosedText: mcls
+            customClosedText: cls
   ```
 
 This is with the default Lovelace frontend theme set:
 
-![Default](ex2.gif)
+![Default](blinds_default.jpg)
 
 
 This is with the "Slate" frontend theme set:
 
-![Slate](ex3.gif)
+![Slate](blinds_default_slate_theme.jpg)
 
-This is how this plugin looks with the Fan control & Binary Button Rows:
+This is with custom setpoints and a custom theme:
 
-![Slate-Compare](button-row-example-compare.gif)
+![Custom Setpoints and Theme](blinds_custom_setpoints.jpg)
+
+And here is the above with custom text:
+
+![Custom Setpoints and Theme](blinds_custom_text.jpg)
