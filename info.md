@@ -39,7 +39,7 @@ This element is completely theme-able to provide a match to the other control ro
 
 This is with the default Lovelace frontend theme set:
 
-![Default](ex2.gif)
+![Default](blinds_default.jpg)
 
 
 This is with the "Slate" frontend theme set:
