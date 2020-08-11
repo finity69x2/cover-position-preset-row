@@ -44,7 +44,7 @@ This is with the default Lovelace frontend theme set:
 
 This is with the "Slate" frontend theme set:
 
-![Slate]((blinds_default_custom_theme.jpg))
+![Slate]((blinds_default_slate_theme.jpg))
 
 This is how this plugin looks with the Fan control & Binary Button Rows:
 
