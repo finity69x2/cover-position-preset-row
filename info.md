@@ -16,6 +16,7 @@ This element is completely theme-able to provide a match to the other control ro
           - type: custom:cover-position-preset-row
             name: Blind Custom Position
             entity: cover.blinds_test
+            reverseButtons: true
             ## used to select your own customizable theme
             customTheme: true
             isOpenColor: 'rgb(255, 0, 0)'
