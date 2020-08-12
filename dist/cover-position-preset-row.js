@@ -165,10 +165,10 @@ class CustomCoverPositionRow extends Polymer.Element {
 			}
 			
 		} else {
-			openSP =  parseInt(openSetpoint);
-			midOpenSP = parseInt(midOpenSetpoint);
-			midCloseSP = parseInt(midCloseSetpoint);
-			closeSP = parseInt(closeSetpoint);
+			openSP =  99;
+			midOpenSP = 66;
+			midCloseSP = 33;
+			closeSP = 0;
 			if (stateObj && stateObj.attributes) {
 				if (stateObj.state == 'open' && stateObj.attributes.current_position <= 100 && stateObj.attributes.current_position >= 83) {
 					opened = 'on';
