@@ -36,15 +36,15 @@ Then to use this in a card place the following in your entity card:
 | customSetpoints | Boolean | No | false | Set to true to use custom position setpoints |
 | customTheme | Boolean | No | false | Set to true to use a custom theme |
 | customText | Boolean | No | false | Set to true to use custom button text |
-| OpenPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
-| MidOpenPosition | Integer | No | 66 | Sets the position setpoint for the "mid open" button  |
-| MidClosePosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
-| ClosePosition | Integer | No | 0 | Sets the position setpoint for the "close" button (min 0)|
-| IsOpenedColor | String | No | '#f44c09' | Sets the color of the 'open' button if cover is fully open |
-| IsMidOpenedColor | String | No | '#f44c09' | Sets the color of the 'mid open' button if cover is partially open but closer to open |
-| IsMidClosedColor | String | No | '#f44c09' | Sets the color of the 'mid closed' button if cover is partially open but cloder to closed |
-| IsClosedColor | String | No | '#43A047' | Sets the color of the 'closed' button if cover is closed |
-| ButtonInactiveColor | String | No | '#759aaa' | Sets the color of the the buttons if that selection is not "active" |
+| openPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
+| midOpenPosition | Integer | No | 66 | Sets the position setpoint for the "mid open" button  |
+| midClosePosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
+| closePosition | Integer | No | 0 | Sets the position setpoint for the "close" button (min 0)|
+| isOpenedColor | String | No | '#f44c09' | Sets the color of the 'open' button if cover is fully open |
+| isMidOpenedColor | String | No | '#f44c09' | Sets the color of the 'mid open' button if cover is partially open but closer to open |
+| isMidClosedColor | String | No | '#f44c09' | Sets the color of the 'mid closed' button if cover is partially open but cloder to closed |
+| isClosedColor | String | No | '#43A047' | Sets the color of the 'closed' button if cover is closed |
+| buttonInactiveColor | String | No | '#759aaa' | Sets the color of the the buttons if that selection is not "active" |
 | customOpenText | String | No | '99%' | Sets the text of the "open" position button |
 | customMidOpenText | String | No | '66%' | Sets the text of the "mid open" position button |
 | customMidClosedText | String | No | '33%' | Sets the text of the "mid close" position button |
