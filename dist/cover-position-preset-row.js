@@ -91,15 +91,15 @@ class CustomCoverPositionRow extends Polymer.Element {
 			customSetpoints: false,
 			customText: false,
 			reverseButtons: false,
-			OpenPosition: 99,
-			MidOpenPosition: 66,
-			MidClosePosition: 33,
-			ClosePosition: 0,
-			IsOpenedColor: '#f44c09',
-			IsMidOpenedColor: '#f44c09',
-			IsMidClosedColor: '#f44c09',
-			IsClosedColor: '#43A047',
-			ButtonInactiveColor: '#759aaa',
+			openPosition: 99,
+			midOpenPosition: 66,
+			midClosePosition: 33,
+			closePosition: 0,
+			isOpenedColor: '#f44c09',
+			isMidOpenedColor: '#f44c09',
+			isMidClosedColor: '#f44c09',
+			isClosedColor: '#43A047',
+			buttonInactiveColor: '#759aaa',
 			customOpenText: '99%',
 			customMidOpenText: '66%',
 			customMidClosedText: '33%',
@@ -115,15 +115,15 @@ class CustomCoverPositionRow extends Polymer.Element {
 		const custTheme = config.customTheme;
 		const custSetpoint = config.customSetpoints;
 		const custTxt = config.customText;
-		const openedClr = config.IsOpenedColor;
-		const midOpenedClr = config.IsMidOpenedColor;
-		const midClosedClr = config.IsMidClosedColor;
-		const closedClr = config.IsClosedColor;
-		const buttonOffClr = config.ButtonInactiveColor;
-		const openSetpoint = config.OpenPosition;
-		const midOpenSetpoint = config.MidOpenPosition;
-		const midCloseSetpoint = config.MidClosePosition;
-		const closeSetpoint = config.ClosePosition;
+		const openedClr = config.isOpenedColor;
+		const midOpenedClr = config.isMidOpenedColor;
+		const midClosedClr = config.isMidClosedColor;
+		const closedClr = config.isClosedColor;
+		const buttonOffClr = config.buttonInactiveColor;
+		const openSetpoint = config.openPosition;
+		const midOpenSetpoint = config.midOpenPosition;
+		const midCloseSetpoint = config.midClosePosition;
+		const closeSetpoint = config.mlosePosition;
 		const custOpenTxt = config.customOpenText;
 		const custMidOpenTxt = config.customMidOpenText;
 		const custMidClosedTxt = config.customMidClosedText;
