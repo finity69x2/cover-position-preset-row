@@ -123,7 +123,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 		const openSetpoint = config.openPosition;
 		const midOpenSetpoint = config.midOpenPosition;
 		const midCloseSetpoint = config.midClosePosition;
-		const closeSetpoint = config.mlosePosition;
+		const closeSetpoint = config.closePosition;
 		const custOpenTxt = config.customOpenText;
 		const custMidOpenTxt = config.customMidOpenText;
 		const custMidClosedTxt = config.customMidClosedText;
