@@ -36,6 +36,7 @@ Then to use this in a card place the following in your entity card:
 | customSetpoints | Boolean | No | false | Set to true to use custom position setpoints |
 | customTheme | Boolean | No | false | Set to true to use a custom theme |
 | customText | Boolean | No | false | Set to true to use custom button text |
+| reverseButtons | Boolean | No | false | Set to true to reverse the button order |
 | openPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
 | midOpenPosition | Integer | No | 66 | Sets the position setpoint for the "mid open" button  |
 | midClosePosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
@@ -71,6 +72,7 @@ This plugin can also be used with a group of positionable covers by creating a "
           - type: custom:cover-position-preset-row
             name: Blind Custom Position
             entity: cover.blinds_test
+            reverseButtons: true
             ## used to select your own customizable theme
             customTheme: true
             isOpenColor: 'rgb(255, 0, 0)'
