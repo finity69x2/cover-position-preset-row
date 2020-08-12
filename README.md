@@ -30,12 +30,12 @@ Then to use this in a card place the following in your entity card:
 
 | Name | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| entity | String | Yes | none | Any positional cover entity_id (including "cover group" entities) |
 | type | String | Yes | none | custom:cover-position-entity-row |
+| entity | String | Yes | none | Any positional cover entity_id (including "cover group" entities) |
 | name | String | No | none | A custom name for the entity in the row |
-| customTheme | Boolean | No | false | set to true to use a custom theme |
-| customSetpoints | Boolean | No | false | set to true to use custom position setpoints |
-| customText | Boolean | No | false | set to true to use custom button text |
+| customSetpoints | Boolean | No | false | Set to true to use custom position setpoints |
+| customTheme | Boolean | No | false | Set to true to use a custom theme |
+| customText | Boolean | No | false | Set to true to use custom button text |
 | OpenPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
 | MidOpenPosition | Integer | No | 66 | Sets the position setpoint for the "mid open" button  |
 | MidClosePosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
