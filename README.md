@@ -73,17 +73,17 @@ This plugin can also be used with a group of positionable covers by creating a "
             entity: cover.blinds_test
             ## used to select your own customizable theme
             customTheme: true
-            IsOpenColor: 'rgb(255, 0, 0)'
-            IsMidOpenColor: '#888888'
-            IsMidClosedColor: '#222222'
-            IsClosedColor: 'purple'
-            ButtonInactiveColor: 'black'
+            isOpenColor: 'rgb(255, 0, 0)'
+            isMidOpenColor: '#888888'
+            isMidClosedColor: '#222222'
+            isClosedColor: 'purple'
+            buttonInactiveColor: 'black'
             ## used to set the custom setpoints for the cover (default is 0, 33, 66, and 99)
             customSetpoints: true
-            OpenPosition: 85
-            MidOpenPosition: 40
-            MidClosePosition: 20
-            ClosePosition: 8
+            openPosition: 85
+            midOpenPosition: 40
+            midClosePosition: 20
+            closePosition: 8
             ## used to select custom text for the buttons (defaults to 0, 33, 66, 99. Or it defaults to the values of the setpoints if custom setpoints are used)
             customText: true
             customOpenText: open
