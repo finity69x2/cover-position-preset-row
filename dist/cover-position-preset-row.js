@@ -300,7 +300,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 			param.position = this._midOpenSP
 			this.hass.callService('cover', 'set_cover_position', param);
 		} else if (position == 'midclose') {
-			param.position = this._midCloseSPSP
+			param.position = this._midCloseSP
 			this.hass.callService('cover', 'set_cover_position', param);
 		} else if (position == 'close') {
 			param.position = this._closeSP
