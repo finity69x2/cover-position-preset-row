@@ -43,8 +43,8 @@ Then to use this in a card place the following in your entity card:
 | ButtonInactiveColor | String | No | '#759aaa' | Sets the color of the the buttons if that selection is not "active" |
 | OpenPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
 | MidOpenPosition | Integer | No | 66 | Sets the position setpoint for the "mid open" button  |
-| MidClosedPosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
-| ClosedPosition | Integer | No | 0 | Sets the position setpoint for the "close" button (min 0)|
+| MidClosePosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
+| ClosePosition | Integer | No | 0 | Sets the position setpoint for the "close" button (min 0)|
 | customOpenText | String | No | '99%' | Sets the text of the "open" position button |
 | customMidOpenText | String | No | '66%' | Sets the text of the "mid open" position button |
 | customMidClosedText | String | No | '33%' | Sets the text of the "mid close" position button |
