@@ -275,30 +275,6 @@ class CustomCoverPositionRow extends Polymer.Element {
 		if (revButtons) {
 			this.setProperties({
 				_stateObj: stateObj,
-				_leftPosition: closed === 'on',
-				_midLeftPosition: midClosed === 'on',
-				_midRightPosition: midOpened === 'on',
-				_rightPosition: opened === 'on',
-				_leftColor: closedcolor,
-				_midLeftColor: midclosedcolor,
-				_midRightColor: midopenedcolor,
-				_rightColor: openedcolor,
-				_closeSP: closeSP,
-				_midCloseSP: midCloseSP,
-				_midOpenSP: midOpenSP,
-				_openSP: openSP,
-				_leftText: closedtext,
-				_midLeftText: midclosedtext,
-				_midRightText: midopentext,
-				_rightText: opentext,
-				_leftName: closeName,
-				_midLeftName: midCloseName,
-				_midRightName: midOpenName,
-				_rightName: openName,
-			});
-		} else {
-			this.setProperties({
-				_stateObj: stateObj,
 				_leftPosition: opened === 'on',
 				_midLeftPosition: midOpened === 'on',
 				_midRightPosition: midClosed === 'on',
@@ -319,6 +295,30 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftName: midOpenName,
 				_midRightName: midCloseName,
 				_rightName: closeName,
+			});
+		} else {
+			this.setProperties({
+				_stateObj: stateObj,
+				_leftPosition: closed === 'on',
+				_midLeftPosition: midClosed === 'on',
+				_midRightPosition: midOpened === 'on',
+				_rightPosition: opened === 'on',
+				_leftColor: closedcolor,
+				_midLeftColor: midclosedcolor,
+				_midRightColor: midopenedcolor,
+				_rightColor: openedcolor,
+				_closeSP: closeSP,
+				_midCloseSP: midCloseSP,
+				_midOpenSP: midOpenSP,
+				_openSP: openSP,
+				_leftText: closedtext,
+				_midLeftText: midclosedtext,
+				_midRightText: midopentext,
+				_rightText: opentext,
+				_leftName: closeName,
+				_midLeftName: midCloseName,
+				_midRightName: midOpenName,
+				_rightName: openName,
 			});
 		}
 	}
