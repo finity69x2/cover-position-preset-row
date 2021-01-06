@@ -50,6 +50,7 @@ Then to use this in a card place the following in your entity card:
 | customMidOpenText | String | No | '66%' | Sets the text of the "mid open" position button |
 | customMidClosedText | String | No | '33%' | Sets the text of the "mid close" position button |
 | customClosedText | String | No | '0%' | Sets the text of the "close" position button |
+| state_color | Boolean | No | false | Sets the icon color of the entity to reflect the current state |
 
 
 The values for the colors can be any valid color string in "HEX", "RGB" or by color name.
