@@ -76,8 +76,8 @@ This plugin can also be used with a group of positionable covers by creating a "
             reverseButtons: true
             ## used to select your own customizable theme
             customTheme: true
-            isOpenColor: 'rgb(255, 0, 0)'
-            isMidOpenColor: '#888888'
+            isOpenedColor: 'rgb(255, 0, 0)'
+            isMidOpenedColor: '#888888'
             isMidClosedColor: '#222222'
             isClosedColor: 'purple'
             buttonInactiveColor: 'black'
