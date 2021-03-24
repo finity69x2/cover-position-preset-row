@@ -37,7 +37,6 @@ Then to use this in a card place the following in your entity card:
 | customTheme | Boolean | No | false | Set to true to use a custom theme |
 | customText | Boolean | No | false | Set to true to use custom button text |
 | reverseButtons | Boolean | No | false | Set to true to reverse the button order |
-| isTwoPositionCover | Boolean | No | false | Set to true to hide the Medium Speed button |
 | width | String | No | 30px | A custom width for the buttons |
 | height | String | No | 30px | A custom height for the buttons |
 | openPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
