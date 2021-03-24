@@ -37,6 +37,8 @@ Then to use this in a card place the following in your entity card:
 | customTheme | Boolean | No | false | Set to true to use a custom theme |
 | customText | Boolean | No | false | Set to true to use custom button text |
 | reverseButtons | Boolean | No | false | Set to true to reverse the button order |
+| width | String | No | 30px | A custom width for the buttons |
+| height | String | No | 30px | A custom height for the buttons |
 | openPosition | Integer | No | 99 | Sets the position setpoint for the "open" button (max 100) |
 | midOpenPosition | Integer | No | 66 | Sets the position setpoint for the "mid open" button  |
 | midClosePosition | Integer | No | 33 | Sets the position setpoint for the "mid close" button |
@@ -93,6 +95,8 @@ This plugin can also be used with a group of positionable covers by creating a "
             customMidOpenText: mop
             customMidClosedText: mcls
             customClosedText: cls
+            width: '15px'
+            height: '15px'
   ```
 
 This is with the default Lovelace frontend theme set:
