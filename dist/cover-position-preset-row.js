@@ -32,13 +32,13 @@ class CustomCoverPositionRow extends Polymer.Element {
 							disabled='[[_leftPosition]]'>[[_leftText]]</button>
 						<button
 							class='position'
-							style='[[_midLeftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]];[[_hideMidLeft]]'
+							style='[[_midLeftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'//;[[_hideMidLeft]]'
 							toggles name="[[_midLeftName]]"
 							on-click='setPosition'
 							disabled='[[_midLeftPosition]]'>[[_midLeftText]]</button>
 						<button
 							class='position'
-							style='[[_midRightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]];[[_hideMidRight]]'
+							style='[[_midRightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'//;[[_hideMidRight]]'
 							toggles name="[[_midRightName]]"
 							on-click='setPosition'
 							disabled='[[_midRightPosition]]'>[[_midRightText]]</button>
@@ -79,8 +79,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftPosition: Boolean,
 				_midRightPosition: Boolean,
 				_rightPosition: Boolean,
-				_hideMidLeft: String,
-				_hideMidRight: String,
+				//_hideMidLeft: String,
+				//_hideMidRight: String,
 				_leftSP: Number,
 				_midLeftSP: Number,
 				_midRightSP: Number,
@@ -96,7 +96,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 			customSetpoints: false,
 			customText: false,
 			reverseButtons: false,
-			isTwoPositionCover: false,
+			//isTwoPositionCover: false,
 			openPosition: 99,
 			midOpenPosition: 66,
 			midClosePosition: 33,
@@ -124,7 +124,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 		const custSetpoint = config.customSetpoints;
 		const custTxt = config.customText;
 		const revButtons = config.reverseButtons;
-		const twoPosCvr = config.isTwoPositionCover;
+		//const twoPosCvr = config.isTwoPositionCover;
 		const buttonWidth = config.width;
 		const buttonHeight = config.height;
 		const openedClr = config.isOpenedColor;
@@ -274,6 +274,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 			
 		}
 		
+		/*
 		let hidemedium = 'display:block';
 		let nohide = 'display:block';
 		
@@ -282,6 +283,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 		} else {
 			hidemedium = 'display:block';
 		}
+		*/
 		
 		let buttonwidth = buttonWidth;
 		let buttonheight = buttonHeight;
@@ -316,8 +318,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftName: midOpenName,
 				_midRightName: midCloseName,
 				_rightName: closeName,
-				_hideMidLeft: nohide,
-				_hideMidRight: hidemedium,
+				//_hideMidLeft: nohide,
+				//_hideMidRight: hidemedium,
 			});
 		} else {
 			this.setProperties({
@@ -344,8 +346,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftName: midCloseName,
 				_midRightName: midOpenName,
 				_rightName: openName,
-				_hideMidRight: nohide,
-				_hideMidLeft: hidemedium,
+				//_hideMidRight: nohide,
+				//_hideMidLeft: hidemedium,
 			});
 		}
 	}
