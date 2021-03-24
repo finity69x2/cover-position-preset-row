@@ -8,9 +8,6 @@ class CustomCoverPositionRow extends Polymer.Element {
 					line-height: inherit;
 				}
 				.position {
-					min-width: 30px;
-					max-width: 30px;
-					height: 30px;
 					margin-left: 2px;
 					margin-right: 2px;
 					background-color: #759aaa;
@@ -29,25 +26,25 @@ class CustomCoverPositionRow extends Polymer.Element {
 						<div class='horizontal justified layout' on-click="stopPropagation">
 						<button
 							class='position'
-							style='[[_leftColor]]'
+							style='[[_leftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 							toggles name="[[_leftName]]"
 							on-click='setPosition'
 							disabled='[[_leftPosition]]'>[[_leftText]]</button>
 						<button
 							class='position'
-							style='[[_midLeftColor]]'
+							style='[[_midLeftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]];[[_hideMidLeft]]'
 							toggles name="[[_midLeftName]]"
 							on-click='setPosition'
 							disabled='[[_midLeftPosition]]'>[[_midLeftText]]</button>
 						<button
 							class='position'
-							style='[[_midRightColor]]'
+							style='[[_midRightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]];[[_hideMidRight]]'
 							toggles name="[[_midRightName]]"
 							on-click='setPosition'
 							disabled='[[_midRightPosition]]'>[[_midRightText]]</button>
 						<button
 							class='position'
-							style='[[_rightColor]]'
+							style='[[_rightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
 							toggles name="[[_rightName]]"
 							on-click='setPosition'
 							disabled='[[_rightPosition]]'>[[_rightText]]</button>
@@ -68,6 +65,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftColor: String,
 				_midRighthColor: String,
 				_rightColor: String,
+				_width: String,
+				_height: String,
 				_leftText: String,
 				_midLeftText: String,
 				_midRightText: String,
@@ -80,6 +79,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftPosition: Boolean,
 				_midRightPosition: Boolean,
 				_rightPosition: Boolean,
+				_hideMidLeft: String,
+				_hideMidRight: String,
 				_leftSP: Number,
 				_midLeftSP: Number,
 				_midRightSP: Number,
@@ -95,10 +96,13 @@ class CustomCoverPositionRow extends Polymer.Element {
 			customSetpoints: false,
 			customText: false,
 			reverseButtons: false,
+			isTwoPositionCover: false,
 			openPosition: 99,
 			midOpenPosition: 66,
 			midClosePosition: 33,
 			closePosition: 0,
+			width: '30px',
+			height: '30px',
 			isOpenedColor: '#f44c09',
 			isMidOpenedColor: '#f44c09',
 			isMidClosedColor: '#f44c09',
@@ -120,6 +124,9 @@ class CustomCoverPositionRow extends Polymer.Element {
 		const custSetpoint = config.customSetpoints;
 		const custTxt = config.customText;
 		const revButtons = config.reverseButtons;
+		const twoPosCvr = config.isTwoPositionCover;
+		const buttonWidth = config.width;
+		const buttonHeight = config.height;
 		const openedClr = config.isOpenedColor;
 		const midOpenedClr = config.isMidOpenedColor;
 		const midClosedClr = config.isMidClosedColor;
@@ -265,7 +272,19 @@ class CustomCoverPositionRow extends Polymer.Element {
 			midclosedtext = '33%';
 			closedtext = '0%';
 			
-		} 
+		}
+		
+		let hidemedium = 'display:block';
+		let nohide = 'display:block';
+		
+		if (twoPosCvr) {
+			hidemedium = 'display:none';
+		} else {
+			hidemedium = 'display:block';
+		}
+		
+		let buttonwidth = buttonWidth;
+		let buttonheight = buttonHeight;
 		
 		let openName = 'open';
 		let midOpenName = 'midopen';
@@ -279,6 +298,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftPosition: midOpened === 'on',
 				_midRightPosition: midClosed === 'on',
 				_rightPosition: closed === 'on',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_leftColor: openedcolor,
 				_midLeftColor: midopenedcolor,
 				_midRightColor: midclosedcolor,
@@ -295,6 +316,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftName: midOpenName,
 				_midRightName: midCloseName,
 				_rightName: closeName,
+				_hideMidLeft: nohide,
+				_hideMidRight: hidemedium,
 			});
 		} else {
 			this.setProperties({
@@ -303,6 +326,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftPosition: midClosed === 'on',
 				_midRightPosition: midOpened === 'on',
 				_rightPosition: opened === 'on',
+				_width: buttonwidth,
+				_height: buttonheight,
 				_leftColor: closedcolor,
 				_midLeftColor: midclosedcolor,
 				_midRightColor: midopenedcolor,
@@ -319,6 +344,8 @@ class CustomCoverPositionRow extends Polymer.Element {
 				_midLeftName: midCloseName,
 				_midRightName: midOpenName,
 				_rightName: openName,
+				_hideMidRight: nohide,
+				_hideMidLeft: hidemedium,
 			});
 		}
 	}
