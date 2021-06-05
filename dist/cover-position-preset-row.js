@@ -1,3 +1,11 @@
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "cover-position-preset-row",
+  name: "cover position preset row",
+  description: "A plugin to display your cover controls in a button row.",
+  preview: false,
+});
+
 class CustomCoverPositionRow extends Polymer.Element {
 
 	static get template() {
