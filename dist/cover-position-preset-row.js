@@ -104,6 +104,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 			customSetpoints: false,
 			customText: false,
 			reverseButtons: false,
+			allowDisablingButtons: true,
 			//isTwoPositionCover: false,
 			openPosition: 99,
 			midOpenPosition: 66,
@@ -132,6 +133,7 @@ class CustomCoverPositionRow extends Polymer.Element {
 		const custSetpoint = config.customSetpoints;
 		const custTxt = config.customText;
 		const revButtons = config.reverseButtons;
+		const allowDisable = config.allowDisablingButtons;
 		//const twoPosCvr = config.isTwoPositionCover;
 		const buttonWidth = config.width;
 		const buttonHeight = config.height;
@@ -304,10 +306,10 @@ class CustomCoverPositionRow extends Polymer.Element {
 		if (revButtons) {
 			this.setProperties({
 				_stateObj: stateObj,
-				_leftPosition: opened === 'on',
-				_midLeftPosition: midOpened === 'on',
-				_midRightPosition: midClosed === 'on',
-				_rightPosition: closed === 'on',
+				_leftPosition: (opened === 'on' && allowDisable),
+				_midLeftPosition: (midOpened === 'on' && allowDisable),
+				_midRightPosition: (midClosed === 'on' && allowDisable),
+				_rightPosition: (closed === 'on' && allowDisable),
 				_width: buttonwidth,
 				_height: buttonheight,
 				_leftColor: openedcolor,
@@ -332,10 +334,10 @@ class CustomCoverPositionRow extends Polymer.Element {
 		} else {
 			this.setProperties({
 				_stateObj: stateObj,
-				_leftPosition: closed === 'on',
-				_midLeftPosition: midClosed === 'on',
-				_midRightPosition: midOpened === 'on',
-				_rightPosition: opened === 'on',
+				_leftPosition: (closed === 'on' && allowDisable),
+				_midLeftPosition: (midClosed === 'on' && allowDisable),
+				_midRightPosition: (midOpened === 'on' && allowDisable),
+				_rightPosition: (opened === 'on' && allowDisable),
 				_width: buttonwidth,
 				_height: buttonheight,
 				_leftColor: closedcolor,
