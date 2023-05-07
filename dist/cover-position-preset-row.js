@@ -6,106 +6,21 @@ window.customCards.push({
   preview: false,
 });
 
-class CustomCoverPositionRow extends Polymer.Element {
+const LitElement = customElements.get("ha-panel-lovelace") ? Object.getPrototypeOf(customElements.get("ha-panel-lovelace")) : Object.getPrototypeOf(customElements.get("hc-lovelace"));
+const html = LitElement.prototype.html;
+const css = LitElement.prototype.css;
 
-	static get template() {
-		return Polymer.html`
-			<style is="custom-style" include="iron-flex iron-flex-alignment"></style>
-			<style>
-				:host {
-					line-height: inherit;
-				}
-				.position {
-					margin-left: 2px;
-					margin-right: 2px;
-					background-color: #759aaa;
-					border: 1px solid lightgrey; 
-					border-radius: 4px;
-					font-size: 10px !important;
-					color: inherit;
-					text-align: center;
-					float: right !important;
-					padding: 1px;
-					cursor: pointer;
-				}
-				
-				</style>
-					<hui-generic-entity-row hass="[[hass]]" config="[[_config]]">
-						<div class='horizontal justified layout' on-click="stopPropagation">
-						<button
-							class='position'
-							style='[[_leftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
-							toggles name="[[_leftName]]"
-							on-click='setPosition'
-							disabled='[[_leftPosition]]'>[[_leftText]]</button>
-						<button
-							class='position'
-							style='[[_midLeftColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'//;[[_hideMidLeft]]'
-							toggles name="[[_midLeftName]]"
-							on-click='setPosition'
-							disabled='[[_midLeftPosition]]'>[[_midLeftText]]</button>
-						<button
-							class='position'
-							style='[[_midRightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'//;[[_hideMidRight]]'
-							toggles name="[[_midRightName]]"
-							on-click='setPosition'
-							disabled='[[_midRightPosition]]'>[[_midRightText]]</button>
-						<button
-							class='position'
-							style='[[_rightColor]];min-width:[[_width]];max-width:[[_width]];height:[[_height]]'
-							toggles name="[[_rightName]]"
-							on-click='setPosition'
-							disabled='[[_rightPosition]]'>[[_rightText]]</button>
-						</div>
-					</hui-generic-entity-row>
-		`;
-    }
+class CustomCoverPositionRow extends LitElement {
 
-    static get properties() {
-		return {
-			hass: {
-				type: Object,
-				observer: 'hassChanged'
-			},
-				_config: Object,
-				_stateObj: Object,
-				_leftColor: String,
-				_midLeftColor: String,
-				_midRighthColor: String,
-				_rightColor: String,
-				_width: String,
-				_height: String,
-				_leftText: String,
-				_midLeftText: String,
-				_midRightText: String,
-				_rightText: String,
-				_leftName: String,
-				_midLeftName: String,
-				_midRightName: String,
-				_rightName: String,
-				_leftPosition: Boolean,
-				_midLeftPosition: Boolean,
-				_midRightPosition: Boolean,
-				_rightPosition: Boolean,
-				//_hideMidLeft: String,
-				//_hideMidRight: String,
-				_leftSP: Number,
-				_midLeftSP: Number,
-				_midRightSP: Number,
-				_rightSP: Number,
-		}
-	}
 
-	setConfig(config) {
-		this._config = config;
-		
+	constructor() {
+		super();
 		this._config = {
 			customTheme: false,
 			customSetpoints: false,
 			customText: false,
 			reverseButtons: false,
 			allowDisablingButtons: true,
-			//isTwoPositionCover: false,
 			openPosition: 99,
 			midOpenPosition: 66,
 			midClosePosition: 33,
@@ -121,20 +36,117 @@ class CustomCoverPositionRow extends Polymer.Element {
 			customMidOpenText: '66%',
 			customMidClosedText: '33%',
 			customClosedText: '0%',
-			...config
 		};
 	}
 
+	static get properties() {
+		return {
+			hass: Object,
+			_config: Object,
+			_stateObj: Object,
+			_leftColor: String,
+			_midLeftColor: String,
+			_midRighthColor: String,
+			_rightColor: String,
+			_width: String,
+			_height: String,
+			_leftText: String,
+			_midLeftText: String,
+			_midRightText: String,
+			_rightText: String,
+			_leftName: String,
+			_midLeftName: String,
+			_midRightName: String,
+			_rightName: String,
+			_leftPosition: Boolean,
+			_midLeftPosition: Boolean,
+			_midRightPosition: Boolean,
+			_rightPosition: Boolean,
+			_leftSP: Number,
+			_midLeftSP: Number,
+			_midRightSP: Number,
+			_rightSP: Number,
+		};
+	}
+
+	static get styles() {
+		return css`
+			:host {
+				line-height: inherit;
+			}
+			.position {
+				margin-left: 2px;
+				margin-right: 2px;
+				background-color: #759aaa;
+				border: 1px solid lightgrey; 
+				border-radius: 4px;
+				font-size: 10px !important;
+				color: inherit;
+				text-align: center;
+				float: left !important;
+				padding: 1px;
+				cursor: pointer;
+			}
+		`;
+	}
+	
+	render() {
+		return html`
+			<hui-generic-entity-row .hass="${this.hass}" .config="${this._config}">
+				<div id='button-container' class='horizontal justified layout'>
+					<button
+						class='position'
+						style='${this._leftColor};min-width:${this._width};max-width:${this._width};height:${this._height}'
+						toggles name="${this._leftName}"
+						@click=${this.setPosition}
+						.disabled=${this._leftState}>${this._leftText}</button>
+					<button
+						class='position'
+						style='${this._midLeftColor};min-width:${this._width};max-width:${this._width};height:${this._height};${this._hideMidLeft}'
+						toggles name="${this._midLeftName}"
+						@click=${this.setPosition}
+						.disabled=${this._midLeftState}>${this._midLeftText}</button>
+					<button
+						class='position'
+						style='${this._midRightColor};min-width:${this._width};max-width:${this._width};height:${this._height};${this._hideMidRight}'
+						toggles name="${this._midRightName}"
+						@click=${this.setPosition}
+						.disabled=${this._midRightState}>${this._midRightText}</button>
+					<button
+						class='position'
+						style='${this._rightColor};min-width:${this._width};max-width:${this._width};height:${this._height}'
+						toggles name="${this._rightName}"
+						@click=${this.setPosition}
+						.disabled=${this._rightState}>${this._rightText}</button>
+				</div>
+			</hui-generic-entity-row>
+		`;
+	}
+	
+	firstUpdated() {
+		super.firstUpdated();
+		this.shadowRoot.getElementById('button-container').addEventListener('click', (ev) => ev.stopPropagation());
+	}
+
+	setConfig(config) {
+		this._config = { ...this._config, ...config };
+	}
+
+	updated(changedProperties) {
+		if (changedProperties.has("hass")) {
+			this.hassChanged();
+		}
+	}
+	
 	hassChanged(hass) {
 
 		const config = this._config;
-		const stateObj = hass.states[config.entity];
+		const stateObj = this.hass.states[config.entity];
 		const custTheme = config.customTheme;
 		const custSetpoint = config.customSetpoints;
 		const custTxt = config.customText;
 		const revButtons = config.reverseButtons;
 		const allowDisable = config.allowDisablingButtons;
-		//const twoPosCvr = config.isTwoPositionCover;
 		const buttonWidth = config.width;
 		const buttonHeight = config.height;
 		const openedClr = config.isOpenedColor;
@@ -254,12 +266,6 @@ class CustomCoverPositionRow extends Polymer.Element {
 			}
 		}
 
-		//let opentext = custOpenTxt;
-		//let midopentext = custMidOpenTxt;
-		//let midclosedtext = custMidClosedTxt;
-		//let closedtext = custClosedTxt;
-
-
 		let opentext;
 		let midopentext;
 		let midclosedtext;
@@ -284,17 +290,6 @@ class CustomCoverPositionRow extends Polymer.Element {
 			
 		}
 		
-		/*
-		let hidemedium = 'display:block';
-		let nohide = 'display:block';
-		
-		if (twoPosCvr) {
-			hidemedium = 'display:none';
-		} else {
-			hidemedium = 'display:block';
-		}
-		*/
-		
 		let buttonwidth = buttonWidth;
 		let buttonheight = buttonHeight;
 		
@@ -304,67 +299,54 @@ class CustomCoverPositionRow extends Polymer.Element {
 		let closeName = 'close';
 		
 		if (revButtons) {
-			this.setProperties({
-				_stateObj: stateObj,
-				_leftPosition: (opened === 'on' && allowDisable),
-				_midLeftPosition: (midOpened === 'on' && allowDisable),
-				_midRightPosition: (midClosed === 'on' && allowDisable),
-				_rightPosition: (closed === 'on' && allowDisable),
-				_width: buttonwidth,
-				_height: buttonheight,
-				_leftColor: openedcolor,
-				_midLeftColor: midopenedcolor,
-				_midRightColor: midclosedcolor,
-				_rightColor: closedcolor,
-				_openSP: openSP,
-				_midOpenSP: midOpenSP,
-				_midCloseSP: midCloseSP,
-				_closeSP: closeSP,
-				_leftText: opentext,
-				_midLeftText: midopentext,
-				_midRightText: midclosedtext,
-				_rightText: closedtext,
-				_leftName: openName,
-				_midLeftName: midOpenName,
-				_midRightName: midCloseName,
-				_rightName: closeName,
-				//_hideMidLeft: nohide,
-				//_hideMidRight: hidemedium,
-			});
+				this._stateObj = stateObj;
+				this._leftPosition = (opened === 'on' && allowDisable);
+				this._midLeftPosition = (midOpened === 'on' && allowDisable);
+				this._midRightPosition = (midClosed === 'on' && allowDisable);
+				this._rightPosition = (closed === 'on' && allowDisable);
+				this._width = buttonwidth;
+				this._height = buttonheight;
+				this._leftColor = openedcolor;
+				this._midLeftColor = midopenedcolor;
+				this._midRightColor = midclosedcolor;
+				this._rightColor = closedcolor;
+				this._openSP = openSP;
+				this._midOpenSP = midOpenSP;
+				this._midCloseSP = midCloseSP;
+				this._closeSP = closeSP;
+				this._leftText = opentext;
+				this._midLeftText = midopentext;
+				this._midRightText = midclosedtext;
+				this._rightText = closedtext;
+				this._leftName = openName;
+				this._midLeftName = midOpenName;
+				this._midRightName = midCloseName;
+				this._rightName = closeName;
 		} else {
-			this.setProperties({
-				_stateObj: stateObj,
-				_leftPosition: (closed === 'on' && allowDisable),
-				_midLeftPosition: (midClosed === 'on' && allowDisable),
-				_midRightPosition: (midOpened === 'on' && allowDisable),
-				_rightPosition: (opened === 'on' && allowDisable),
-				_width: buttonwidth,
-				_height: buttonheight,
-				_leftColor: closedcolor,
-				_midLeftColor: midclosedcolor,
-				_midRightColor: midopenedcolor,
-				_rightColor: openedcolor,
-				_closeSP: closeSP,
-				_midCloseSP: midCloseSP,
-				_midOpenSP: midOpenSP,
-				_openSP: openSP,
-				_leftText: closedtext,
-				_midLeftText: midclosedtext,
-				_midRightText: midopentext,
-				_rightText: opentext,
-				_leftName: closeName,
-				_midLeftName: midCloseName,
-				_midRightName: midOpenName,
-				_rightName: openName,
-				//_hideMidRight: nohide,
-				//_hideMidLeft: hidemedium,
-			});
+				this._stateObj = stateObj;
+				this._leftPosition = (closed === 'on' && allowDisable);
+				this._midLeftPosition = (midClosed === 'on' && allowDisable);
+				this._midRightPosition = (midOpened === 'on' && allowDisable);
+				this._rightPosition = (opened === 'on' && allowDisable);
+				this._width = buttonwidth;
+				this._height = buttonheight;
+				this._leftColor = closedcolor;
+				this._midLeftColor=  midclosedcolor;
+				this._midRightColor = midopenedcolor;
+				this._rightColor = openedcolor;
+				this._closeSP = closeSP;
+				this._midCloseSP = midCloseSP;
+				this._midOpenSP = midOpenSP;
+				this._openSP = openSP;
+				this._leftText = closedtext;
+				this._midLeftText = midclosedtext;
+				this._midRightText = midopentext;
+				this._rightText = opentext;
+				this._leftName = closeName;
+				this._midLeftName = midCloseName;
+				this._midRightName = midOpenName;
+				this._rightName = openName;
 		}
-	}
-
-	
-	stopPropagation(e) {
-		e.stopPropagation();
 	}
 	
 	setPosition(e) {
