@@ -37,6 +37,7 @@ Then to use this in a card place the following in your entity card:
 | customTheme | Boolean | No | false | Set to true to use a custom theme |
 | customText | Boolean | No | false | Set to true to use custom button text |
 | reverseButtons | Boolean | No | false | Set to true to reverse the button order |
+| isTwoPositionCover | Boolean | No | false | Set to true to hide the two middle position preset buttons |
 | allowDisablingButtons | Boolean | No | true | Set to false to prevent buttons being disabled |
 | width | String | No | 30px | A custom width for the buttons |
 | height | String | No | 30px | A custom height for the buttons |
@@ -67,37 +68,36 @@ This plugin can also be used with a group of positionable covers by creating a "
 <b>Configuration Examples:</b>
     
   ```
-    cards:
-      - type: entities
-        title: cover theme test
-        show_header_toggle: false
-        state_color: true
-        entities:
-          - type: custom:cover-position-preset-row
-            name: Blind Custom Position
-            entity: cover.blinds_test
-            reverseButtons: true
-            ## used to select your own customizable theme
-            customTheme: true
-            isOpenedColor: 'rgb(255, 0, 0)'
-            isMidOpenedColor: '#888888'
-            isMidClosedColor: '#222222'
-            isClosedColor: 'purple'
-            buttonInactiveColor: 'black'
-            ## used to set the custom setpoints for the cover (default is 0, 33, 66, and 99)
-            customSetpoints: true
-            openPosition: 85
-            midOpenPosition: 40
-            midClosePosition: 20
-            closePosition: 8
-            ## used to select custom text for the buttons (defaults to 0, 33, 66, 99. Or it defaults to the values of the setpoints if custom setpoints are used)
-            customText: true
-            customOpenText: open
-            customMidOpenText: mop
-            customMidClosedText: mcls
-            customClosedText: cls
-            width: '15px'
-            height: '15px'
+      type: entities
+      title: cover theme test
+      show_header_toggle: false
+      state_color: true
+      entities:
+        - type: custom:cover-position-preset-row
+          name: Blind Custom Position
+          entity: cover.blinds_test
+          reverseButtons: true
+          ## used to select your own customizable theme
+          customTheme: true
+          isOpenedColor: 'rgb(255, 0, 0)'
+          isMidOpenedColor: '#888888'
+          isMidClosedColor: '#222222'
+          isClosedColor: 'purple'
+          buttonInactiveColor: 'black'
+          ## used to set the custom setpoints for the cover (default is 0, 33, 66, and 99)
+          customSetpoints: true
+          openPosition: 85
+          midOpenPosition: 40
+          midClosePosition: 20
+          closePosition: 8
+          ## used to select custom text for the buttons (defaults to 0, 33, 66, 99. Or it defaults to the values of the setpoints if custom setpoints are used)
+          customText: true
+          customOpenText: open
+          customMidOpenText: mop
+          customMidClosedText: mcls
+          customClosedText: cls
+          width: '15px'
+          height: '15px'
   ```
 
 This is with the default Lovelace frontend theme set:
