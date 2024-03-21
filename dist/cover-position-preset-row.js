@@ -37,6 +37,7 @@ class CustomCoverPositionRow extends LitElement {
 			customMidOpenText: '66%',
 			customMidClosedText: '33%',
 			customClosedText: '0%',
+			isTiltCover: false,
 		};
 	}
 
@@ -374,18 +375,24 @@ class CustomCoverPositionRow extends LitElement {
 	setPosition(e) {
 		const position = e.currentTarget.getAttribute('name');
 		const param = {entity_id: this._config.entity};
+		const useTiltService = this._config.isTiltCover;
+		let service = 'set_cover_position';
+		if( useTiltService ) {
+			service = 'set_cover_tilt_position';
+		}
+		
 		if( position == 'open' ){
-			param.position = this._openSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			param.position = this._openSP			
+			this.hass.callService('cover', service, param);
 		} else if (position == 'midopen') {
 			param.position = this._midOpenSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			this.hass.callService('cover', service, param);
 		} else if (position == 'midclose') {
 			param.position = this._midCloseSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			this.hass.callService('cover', service, param);
 		} else if (position == 'close') {
 			param.position = this._closeSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			this.hass.callService('cover', service, param);
 		}
 	}
 }
