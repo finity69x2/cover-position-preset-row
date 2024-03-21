@@ -377,21 +377,38 @@ class CustomCoverPositionRow extends LitElement {
 		const param = {entity_id: this._config.entity};
 		const useTiltService = this._config.isTiltCover;
 		let service = 'set_cover_position';
+		
 		if( useTiltService ) {
 			service = 'set_cover_tilt_position';
 		}
 		
 		if( position == 'open' ){
-			param.position = this._openSP			
+			if (useTiltService) {
+				param.tilt_position = this._openSP
+			} else {
+				param.position = this._openSP	
+			}		
 			this.hass.callService('cover', service, param);
 		} else if (position == 'midopen') {
-			param.position = this._midOpenSP
+			if (useTiltService) {
+				param.tilt_position = this._midOpenSP
+			} else {
+				param.position = this._midOpenSP	
+			}	
 			this.hass.callService('cover', service, param);
 		} else if (position == 'midclose') {
-			param.position = this._midCloseSP
+			if (useTiltService) {
+				param.tilt_position = this._midCloseSP
+			} else {
+				param.position = this._midCloseSP	
+			}	
 			this.hass.callService('cover', service, param);
 		} else if (position == 'close') {
-			param.position = this._closeSP
+			if (useTiltService) {
+				param.tilt_position = this._closeSP
+			} else {
+				param.position = this._closeSP	
+			}
 			this.hass.callService('cover', service, param);
 		}
 	}
