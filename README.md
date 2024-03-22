@@ -55,6 +55,7 @@ Then to use this in a card place the following in your entity card:
 | customMidClosedText | String | No | '33%' | Sets the text of the "mid close" position button |
 | customClosedText | String | No | '0%' | Sets the text of the "close" position button |
 | state_color | Boolean | No | false | Sets the icon color of the entity to reflect the current state |
+| isTiltCover | Boolean | No | false | Set to true to use the cover set position service for tilt covers |
 
 
 The values for the colors can be any valid color string in "HEX", "RGB" or by color name.
@@ -98,6 +99,8 @@ This plugin can also be used with a group of positionable covers by creating a "
           customClosedText: cls
           width: '15px'
           height: '15px'
+          ## used to configure service for alternate blinds/covers - set to true for tilt service use (defaults to false which is the normal cover service).
+          isTiltCover: false
   ```
 
 This is with the default Lovelace frontend theme set:

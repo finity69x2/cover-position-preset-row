@@ -37,6 +37,7 @@ class CustomCoverPositionRow extends LitElement {
 			customMidOpenText: '66%',
 			customMidClosedText: '33%',
 			customClosedText: '0%',
+			isTiltCover: false,
 		};
 	}
 
@@ -172,6 +173,7 @@ class CustomCoverPositionRow extends LitElement {
 		const custMidOpenTxt = config.customMidOpenText;
 		const custMidClosedTxt = config.customMidClosedText;
 		const custClosedTxt = config.customClosedText;
+		const isTiltCover = config.isTiltCover;
 						
 				
 		let openSP;
@@ -183,6 +185,9 @@ class CustomCoverPositionRow extends LitElement {
 		let midClosed;
 		let closed;
 				
+
+		
+
 		if (custSetpoint) {
 			midOpenSP = parseInt(midOpenSetpoint);
 			midCloseSP = parseInt(midCloseSetpoint);
@@ -197,11 +202,15 @@ class CustomCoverPositionRow extends LitElement {
 				closeSP = parseInt(closeSetpoint);
 			}
 			if (stateObj && stateObj.attributes) {
-				if (stateObj.state == 'open' && stateObj.attributes.current_position <= 100 && stateObj.attributes.current_position >= ((openSP + midOpenSP)/2 ) ) {
+				let currentPosition = stateObj.attributes.current_position
+				if (isTiltCover) {
+					currentPosition = stateObj.attributes.current_tilt_position;
+				}
+				if (stateObj.state == 'open' && currentPosition <= 100 && currentPosition >= ((openSP + midOpenSP)/2 ) ) {
 					opened = 'on';
-				} else if (stateObj.state == 'open' && stateObj.attributes.current_position < ((openSP + midOpenSP)/2 ) && stateObj.attributes.current_position >= ((midCloseSP + midOpenSP)/2)) {
+				} else if (stateObj.state == 'open' && currentPosition < ((openSP + midOpenSP)/2 ) && currentPosition >= ((midCloseSP + midOpenSP)/2)) {
 					midOpened = 'on';
-				} else if (stateObj.state == 'open' && stateObj.attributes.current_position < ((midOpenSP + midCloseSP)/2) && stateObj.attributes.current_position >= ((midCloseSP + closeSP)/2)) {
+				} else if (stateObj.state == 'open' && currentPosition < ((midOpenSP + midCloseSP)/2) && currentPosition >= ((midCloseSP + closeSP)/2)) {
 					midClosed = 'on';
 				} else {
 					closed = 'on';
@@ -214,11 +223,15 @@ class CustomCoverPositionRow extends LitElement {
 			midCloseSP = 33;
 			closeSP = 0;
 			if (stateObj && stateObj.attributes) {
-				if (stateObj.state == 'open' && stateObj.attributes.current_position <= 100 && stateObj.attributes.current_position >= 83) {
+				let currentPosition = stateObj.attributes.current_position
+				if (isTiltCover) {
+					currentPosition = stateObj.attributes.current_tilt_position;
+				}
+				if (stateObj.state == 'open' && currentPosition <= 100 && currentPosition >= 83) {
 					opened = 'on';
-				} else if (stateObj.state == 'open' && stateObj.attributes.current_position <= 82 && stateObj.attributes.current_position >= 50) {
+				} else if (stateObj.state == 'open' && currentPosition <= 82 && currentPosition >= 50) {
 					midOpened= 'on';
-				} else if (stateObj.state == 'open' && stateObj.attributes.current_position <= 49 && stateObj.attributes.current_position >= 17) {
+				} else if (stateObj.state == 'open' && currentPosition <= 49 && currentPosition >= 17) {
 					midClosed = 'on';
 				} else {
 					closed = 'on';
@@ -374,18 +387,41 @@ class CustomCoverPositionRow extends LitElement {
 	setPosition(e) {
 		const position = e.currentTarget.getAttribute('name');
 		const param = {entity_id: this._config.entity};
+		const useTiltService = this._config.isTiltCover;
+		let service = 'set_cover_position';
+		
+		if( useTiltService ) {
+			service = 'set_cover_tilt_position';
+		}
+		
 		if( position == 'open' ){
-			param.position = this._openSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			if (useTiltService) {
+				param.tilt_position = this._openSP
+			} else {
+				param.position = this._openSP	
+			}		
+			this.hass.callService('cover', service, param);
 		} else if (position == 'midopen') {
-			param.position = this._midOpenSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			if (useTiltService) {
+				param.tilt_position = this._midOpenSP
+			} else {
+				param.position = this._midOpenSP	
+			}	
+			this.hass.callService('cover', service, param);
 		} else if (position == 'midclose') {
-			param.position = this._midCloseSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			if (useTiltService) {
+				param.tilt_position = this._midCloseSP
+			} else {
+				param.position = this._midCloseSP	
+			}	
+			this.hass.callService('cover', service, param);
 		} else if (position == 'close') {
-			param.position = this._closeSP
-			this.hass.callService('cover', 'set_cover_position', param);
+			if (useTiltService) {
+				param.tilt_position = this._closeSP
+			} else {
+				param.position = this._closeSP	
+			}
+			this.hass.callService('cover', service, param);
 		}
 	}
 }
