@@ -255,24 +255,24 @@ class CustomCoverPositionRow extends LitElement {
 			}
 		} else {
 			if (opened == 'on') {
-				openedcolor = 'background-color: var(--switch-checked-color)';
+				openedcolor = 'background-color: var(--ha-switch-checked-background-color, var(--primary-color))';
 			} else {
-				openedcolor = 'background-color: var(--switch-unchecked-color)';
+				openedcolor = 'background-color: var(--ha-switch-background-color, var(--disabled-color))';
 			}
 			if (midOpened == 'on') {
-				midopenedcolor = 'background-color: var(--switch-checked-color)';
+				midopenedcolor = 'background-color: var(--ha-switch-checked-background-color, var(--primary-color))';
 			} else {
-				midopenedcolor = 'background-color: var(--switch-unchecked-color)';
+				midopenedcolor = 'background-color: var(--ha-switch-background-color, var(--disabled-color))';
 			}
 			if (midClosed == 'on') {
-				midclosedcolor = 'background-color: var(--switch-checked-color)';
+				midclosedcolor = 'background-color: var(--ha-switch-checked-background-color, var(--primary-color))';
 			} else {
-				midclosedcolor = 'background-color: var(--switch-unchecked-color)';
+				midclosedcolor = 'background-color: var(--ha-switch-background-color, var(--disabled-color))';
 			}
 			if (closed == 'on') {
-				closedcolor = 'background-color: var(--switch-checked-color)';
+				closedcolor = 'background-color: var(--ha-switch-checked-background-color, var(--primary-color))';
 			} else {
-				closedcolor = 'background-color: var(--switch-unchecked-color)';
+				closedcolor = 'background-color: var(--ha-switch-background-color, var(--disabled-color))';
 			}
 		}
 
