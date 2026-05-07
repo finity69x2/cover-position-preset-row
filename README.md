@@ -9,6 +9,8 @@ Installation:
 
 The easiest way to install this is to use the Home Assistant Community Store (HACS) in Home Assistant.
 
+  For this fork, you would need to add the custom repository https://github.com/knaackville/cover-position-preset-row as a dashboard in HACS.
+
 Follow the instructions there for installation making sure you note the "url:" section for the resources addition.
 
 
