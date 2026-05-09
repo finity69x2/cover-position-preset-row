@@ -12,7 +12,6 @@ const css = LitElement.prototype.css;
 
 class CustomCoverPositionRow extends LitElement {
 
-
 	constructor() {
 		super();
 		this._config = {
