@@ -254,25 +254,27 @@ class CustomCoverPositionRow extends LitElement {
 				closedcolor = 'background-color:' + buttonOffClr;
 			}
 		} else {
+			const styleOn = 'background-color: var(--ha-switch-checked-background-color, var(--ha-color-fill-primary-normal-resting)); border-color: var(--ha-switch-checked-border-color, var(--ha-color-border-primary-loud))';
+			const styleOff = 'background-color: var(--ha-switch-background-color, var(--ha-color-fill-disabled-quiet-resting)); border-color: var(--ha-switch-border-color, var(--ha-color-border-neutral-normal))';
 			if (opened == 'on') {
-				openedcolor = 'background-color: var(--switch-checked-color)';
+				openedcolor = styleOn;
 			} else {
-				openedcolor = 'background-color: var(--switch-unchecked-color)';
+				openedcolor = styleOff;
 			}
 			if (midOpened == 'on') {
-				midopenedcolor = 'background-color: var(--switch-checked-color)';
+				midopenedcolor = styleOn;
 			} else {
-				midopenedcolor = 'background-color: var(--switch-unchecked-color)';
+				midopenedcolor = styleOff;
 			}
 			if (midClosed == 'on') {
-				midclosedcolor = 'background-color: var(--switch-checked-color)';
+				midclosedcolor = styleOn;
 			} else {
-				midclosedcolor = 'background-color: var(--switch-unchecked-color)';
+				midclosedcolor = styleOff;
 			}
 			if (closed == 'on') {
-				closedcolor = 'background-color: var(--switch-checked-color)';
+				closedcolor = styleOn;
 			} else {
-				closedcolor = 'background-color: var(--switch-unchecked-color)';
+				closedcolor = styleOff;
 			}
 		}
 
